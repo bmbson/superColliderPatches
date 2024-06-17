@@ -1,12 +1,17 @@
-~808DURATION = 0;
-~808Frequency= 80;
+s.plotTree;
 
 (
-{
-	SinOsc.ar(
-		mul: Env.linen(attackTime:0.1, sustainTime:0, releaseTime:1, level:1, curve:'lin').kr(1),
-		freq: 80,
-	)
-}.play;
+SynthDef.new(\808, {
+	arg frequency=45;
+	var sig, env;
+	env = XLine.kr(1, 0.001, 2, doneAction:2);
+	sig = SinOsc.ar(frequency) * env;
+	Out.ar(0, sig);
+	Out.ar(1, sig);
+}).add;
 )
 
+
+x = Synth.new(\808, [\frequency, 50]);
+
+x.set(\frequency, 1500);
