@@ -1,5 +1,7 @@
 Server.program = "pw-jack scsynth";
 
+// Not complete
+
 (
 SynthDef(\dubTechnoStab, {
 	arg freq = 440;
@@ -14,4 +16,3 @@ SynthDef(\dubTechnoStab, {
 )
 
 var synth1 = Synth.new(\dubTechnoStab);
-
